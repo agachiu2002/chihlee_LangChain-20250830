@@ -1,0 +1,10 @@
+---
+descriotipn: langchain 上課用
+golbs:
+  - ./lesson4/**
+  - ./lesson5/**
+alwaysApply: false
+---
+##AI注意事項
+-這些資料都是上課用，請回覆要簡單易懂
+-我課程是langchain

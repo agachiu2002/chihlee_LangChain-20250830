@@ -1,0 +1,20 @@
+[project]
+name = "my-langchain-project"
+version = "0.1.0"
+description = "LangChain 專案練習"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.32.5",
+    "langchain-google-genai",
+    "langchain-openai",
+    "langchain-anthropic",
+    "langchain-ollama",
+    "fastapi",
+    "jupyter",
+    "ipywidgets",
+    "gradio",
+    "dotenv>=0.9.9",
+]
+
+[tool.setuptools.packages.find]
