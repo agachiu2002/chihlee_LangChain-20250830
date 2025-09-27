@@ -5,11 +5,11 @@ import os
 
 # 載入環境變數（可用 OLLAMA_URL / OLLAMA_MODEL 覆蓋預設）
 load_dotenv()
-OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-MODEL_NAME = os.getenv("OLLAMA_MODEL", "llama3.2:latest")
+#OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
+#MODEL_NAME = os.getenv("OLLAMA_MODEL", "llama3.2:latest")
 
 # 使用最原始的呼叫方式：直接以字串 prompt 送到 Ollama
-model = ChatOllama(model=MODEL_NAME, base_url=OLLAMA_URL)
+model = ChatOllama(model="gemma3:1b", base_url="http://localhost:11434")
 
 
 def answer(prompt: str) -> str:
@@ -18,6 +18,7 @@ def answer(prompt: str) -> str:
         return ""
     res = model.invoke(prompt)
     return res.content if hasattr(res, "content") else str(res)
+    #
 
 
 # 最小的 Gradio 介面：一個輸入框 + 一個文字輸出
@@ -30,4 +31,4 @@ iface = gr.Interface(
 )
 
 if __name__ == "__main__":
-    iface.launch(server_name="127.0.0.1", server_port=7860)
+    iface.launch(server_name="127.0.0.1", server_port=7861, share=True)

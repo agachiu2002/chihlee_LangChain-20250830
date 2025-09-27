@@ -15,6 +15,7 @@ dependencies = [
     "ipywidgets",
     "gradio",
     "dotenv>=0.9.9",
+    "ollama>=0.5.4",
 ]
 
 [tool.setuptools.packages.find]

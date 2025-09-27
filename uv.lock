@@ -1666,6 +1666,7 @@ dependencies = [
     { name = "langchain-google-genai" },
     { name = "langchain-ollama" },
     { name = "langchain-openai" },
+    { name = "ollama" },
     { name = "requests" },
 ]
 
@@ -1680,6 +1681,7 @@ requires-dist = [
     { name = "langchain-google-genai" },
     { name = "langchain-ollama" },
     { name = "langchain-openai" },
+    { name = "ollama", specifier = ">=0.5.4" },
     { name = "requests", specifier = ">=2.32.5" },
 ]
 
