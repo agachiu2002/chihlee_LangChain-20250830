@@ -23,6 +23,7 @@ dependencies = [
     "onnxruntime>=1.16.0,<1.23.0",
     "chromadb>=1.2.1",
     "langchain-community>=0.4",
+    "langchain-text-splitters>=1.0.0",
 ]
 
 [project.optional-dependencies]
