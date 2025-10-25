@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  langchain-dev:
+    build: .
+    container_name: langchain-dev-container
+    ports:
+      - "8888:8888"  # Jupyter Lab
+      - "11434:11434"  # Ollama API
+    volumes:
+      - .:/app
+      - ollama-data:/root/.ollama
+      - uv-cache:/root/.cache/uv
+    environment:
+      - PYTHONPATH=/app
+      - JUPYTER_ENABLE_LAB=yes
+      - UV_SYSTEM_PYTHON=1
+      - UV_CACHE_DIR=/root/.cache/uv
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    networks:
+      - langchain-network
+    command: ["uv", "run", "/app/start.sh"]
+
+  # 可選：添加 Ollama 作為獨立服務
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-service
+    ports:
+      - "11435:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - langchain-network
+
+volumes:
+  ollama-data:
+  uv-cache:
+
+networks:
+  langchain-network:
+    driver: bridge
